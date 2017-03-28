@@ -4,9 +4,9 @@
 *  Code used and altered from Caldera Forms (www.calderaforms.com) - Thanks Josh! (https://profiles.wordpress.org/shelob9/)
 */
 
-defined( 'ABSPATH' ) or exit;
+defined( 'ABSPATH' ) || exit;
 
-class Debug_My_Site_Core{
+class Debug_My_Site_Core {
 
 	/**
 	 * Return an array of plugin names and versions
@@ -17,11 +17,11 @@ class Debug_My_Site_Core{
 	 */
 	public static function get_plugins() {
 		$plugins     = array();
-		include_once ABSPATH  . '/wp-admin/includes/plugin.php';
+		include_once ABSPATH . '/wp-admin/includes/plugin.php';
 		$all_plugins = get_plugins();
 		foreach ( $all_plugins as $plugin_file => $plugin_data ) {
 			if ( is_plugin_active( $plugin_file ) ) {
-				$plugins[ $plugin_data[ 'Name' ] ] = $plugin_data[ 'Version' ];
+				$plugins[ $plugin_data['Name'] ] = $plugin_data['Version'];
 			}
 		}
 
@@ -65,8 +65,8 @@ class Debug_My_Site_Core{
 			'PHP Version'                 => $php,
 			'MySQL Version'               => $mysql,
 			'JQuery Version'			  => $wp_scripts->registered['jquery']->ver,
-			'Server Software'             => $_SERVER[ 'SERVER_SOFTWARE' ],
-			'Your User Agent'             => $_SERVER[ 'HTTP_USER_AGENT' ],
+			'Server Software'             => $_SERVER['SERVER_SOFTWARE'],
+			'Your User Agent'             => $_SERVER['HTTP_USER_AGENT'],
 			'Session Save Path'           => session_save_path(),
 			'Session Save Path Exists'    => ( file_exists( session_save_path() ) ? 'Yes' : 'No' ),
 			'Session Save Path Writeable' => ( is_writable( session_save_path() ) ? 'Yes' : 'No' ),
@@ -78,7 +78,7 @@ class Debug_My_Site_Core{
 			'WP Memory Limit'             => WP_MEMORY_LIMIT,
 			'Currently Active Theme'      => $theme_name . ': ' . $theme_version,
 			'Parent Theme'				  => $theme->template,
-			'Currently Active Plugins'    => $plugins
+			'Currently Active Plugins'    => $plugins,
 		);
 		if ( $html ) {
 			$debug = '';
@@ -98,20 +98,18 @@ class Debug_My_Site_Core{
 		} else {
 			return $versions;
 		}
-
-		
 	}
 
-	public static function short_debug_info( $html = true ){
+	public static function short_debug_info( $html = true ) {
 		global $wp_version, $wpdb;
 
 		$data = array(
 			'WordPress Version'     => $wp_version,
 			'PHP Version'           => phpversion(),
 			'MySQL Version'         => $wpdb->db_version(),
-			'WP_DEBUG'              => WP_DEBUG
+			'WP_DEBUG'              => WP_DEBUG,
 		);
-		if( $html ){
+		if ( $html ) {
 			$html = '';
 			foreach ( $data as $what_v => $v ) {
 				$html .= '<li style="display: inline;"><strong>' . $what_v . '</strong>: ' . $v . ' </li>';
@@ -122,4 +120,3 @@ class Debug_My_Site_Core{
 	}
 
 }
-	
