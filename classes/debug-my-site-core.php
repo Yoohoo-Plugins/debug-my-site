@@ -116,7 +116,13 @@ class Debug_My_Site_Core {
 			}
 
 			return '<ul>' . $html . '</ul>';
+		} else {
+			return $data;
 		}
+	}
+
+	public static function build_download_url() {
+		return add_query_arg( 'download', 'true', admin_url( 'tools.php?page=debug-my-site-info' ) );
 	}
 
 }
