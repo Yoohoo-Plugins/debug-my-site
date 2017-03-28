@@ -39,7 +39,7 @@ class Debug_My_Site_Core{
 	 * @return string
 	 */
 	public static function debug_info( $html = true ) {
-		global $wp_version, $wpdb;
+		global $wp_version, $wpdb, $wp_scripts;
 		$wp          = $wp_version;
 		$php         = phpversion();
 		$mysql       = $wpdb->db_version();
@@ -64,6 +64,7 @@ class Debug_My_Site_Core{
 			'WordPress Version'           => $wp,
 			'PHP Version'                 => $php,
 			'MySQL Version'               => $mysql,
+			'JQuery Version'			  => $wp_scripts->registered['jquery']->ver,
 			'Server Software'             => $_SERVER[ 'SERVER_SOFTWARE' ],
 			'Your User Agent'             => $_SERVER[ 'HTTP_USER_AGENT' ],
 			'Session Save Path'           => session_save_path(),
@@ -93,11 +94,12 @@ class Debug_My_Site_Core{
 					$debug .= $version . '</p>';
 				}
 			}
-
 			return $debug;
 		} else {
 			return $versions;
 		}
+
+		
 	}
 
 	public static function short_debug_info( $html = true ){

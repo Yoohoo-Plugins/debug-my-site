@@ -3,7 +3,7 @@
 * Plugin Name: Debug My Site
 * Plugin URI: https://yoohooplugins.com
 * Description: Get debug information for your WordPress website.
-* Version: 1.0.1
+* Version: 1.0.2
 * Author: YooHoo Plugins
 * Author URI: https://yoohooplugins.com
 * Text Domain: debug-my-site
@@ -20,6 +20,14 @@
 *
 * You should have received a copy of the GNU General Public License
 * along with Debug My Site. If not, see https://www.gnu.org/licenses/gpl-2.0.html.
+*
+* CHANGE LOG
+*
+* 1.0.2 - 28/03/2017
+* Enhancement: include JQuery version in debug information. (Works only with default JQuery that is loaded from WordPress)
+*
+* 1.0.1 - 28/03/2017
+* Minor bug fix regarding undefined constant
 */
 defined( 'ABSPATH' ) or exit;
 
