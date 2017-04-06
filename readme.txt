@@ -31,6 +31,9 @@ This section describes how to install the plugin and get it working.
 You may go to 'Tools' > 'Debug My Site' to view your WordPress environment debug information.
 
 == Changelog ==
+= 1.0.3 =
+* Improve coding standards
+* Enhancement: Allow users to download debug information in text file
 
 = 1.0.2 =
 * Enhancement: include JQuery version number loaded by WordPress itself
@@ -42,6 +45,8 @@ You may go to 'Tools' > 'Debug My Site' to view your WordPress environment debug
 * Initial release
 
 == Upgrade Notice ==
+= 1.0.3 =
+Please update to latest version for new features.
 
 = 1.0.2 =
 Please update to latest version for bug fixes and enhancements
