@@ -3,7 +3,7 @@
 * Plugin Name: Debug My Site
 * Plugin URI: https://yoohooplugins.com
 * Description: Get debug information for your WordPress website.
-* Version: 1.0.2
+* Version: 1.0.3
 * Author: YooHoo Plugins
 * Author URI: https://yoohooplugins.com
 * Text Domain: debug-my-site
