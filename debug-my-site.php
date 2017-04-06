@@ -23,6 +23,10 @@
 *
 * CHANGE LOG
 *
+* 1.0.3 - 06/04/2017
+* Improved coding standards
+* Enhancement: Ability for users to download debug information
+*
 * 1.0.2 - 28/03/2017
 * Enhancement: include JQuery version in debug information. (Works only with default JQuery that is loaded from WordPress)
 *
