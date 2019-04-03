@@ -3,7 +3,7 @@ Contributors: andrewza
 Donate link: https://yoohooplugins.com
 Tags: debug, debug information, admin tools, developer tools
 Requires at least: 4.0
-Tested up to: 4.7
+Tested up to: 5.1.1
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=4GC4JEZH7KSKL
 Stable tag: trunk
 License: GPLv2 or later
@@ -31,9 +31,10 @@ This section describes how to install the plugin and get it working.
 You may go to 'Tools' > 'Debug My Site' to view your WordPress environment debug information.
 
 == Changelog ==
+
 = 1.0.3 =
-* Improve coding standards
-* Enhancement: Allow users to download debug information in text file
+* Improved coding standards
+* Enhancement: Added download debug information feature
 
 = 1.0.2 =
 * Enhancement: include JQuery version number loaded by WordPress itself
@@ -46,7 +47,7 @@ You may go to 'Tools' > 'Debug My Site' to view your WordPress environment debug
 
 == Upgrade Notice ==
 = 1.0.3 =
-Please update to latest version for new features.
+Please update Debug My Site to latest version for new features!
 
 = 1.0.2 =
 Please update to latest version for bug fixes and enhancements
