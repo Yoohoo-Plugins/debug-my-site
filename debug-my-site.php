@@ -3,8 +3,8 @@
 * Plugin Name: Debug My Site
 * Plugin URI: https://yoohooplugins.com
 * Description: Get debug information for your WordPress website.
-* Version: 1.0.3
-* Author: YooHoo Plugins
+* Version: 1.0.4
+* Author: Yoohoo Plugins
 * Author URI: https://yoohooplugins.com
 * Text Domain: debug-my-site
 *
@@ -22,6 +22,10 @@
 * along with Debug My Site. If not, see https://www.gnu.org/licenses/gpl-2.0.html.
 *
 * CHANGE LOG
+*
+* 1.0.4 - 03/03/2019
+* Enhancement: Filters added in for other plugins/developers to share specific data.
+* UI: Announcement added to page to show a small message to remove this plugin when not in-use.
 *
 * 1.0.3 - 06/04/2017
 * Improved coding standards
@@ -68,7 +72,7 @@ class Debug_My_Site{
 			include_once DEBUG_MY_SITE_PLUGIN_DIR_PATH . 'classes/debug-my-site-core.php';
 			$eol = "\r\n";
 			$info = esc_attr( 'Short Debug Information', 'debug-my-site' ) . $eol;
-			$info_data = Debug_My_Site_Core::short_debug_info( false );
+			$info_data = apply_filters( 'dms_download_log_content', Debug_My_Site_Core::short_debug_info( false ) );
 			foreach ( $info_data as $key => $value ) {
 				$info .= $key . ': ' . $value . $eol;
 			}

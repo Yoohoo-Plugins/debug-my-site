@@ -2,7 +2,8 @@
 Contributors: andrewza
 Donate link: https://yoohooplugins.com
 Tags: debug, debug information, admin tools, developer tools
-Requires at least: 4.0
+Requires at least: 4.6
+Requires PHP: 5.6
 Tested up to: 5.1.1
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=4GC4JEZH7KSKL
 Stable tag: trunk
@@ -30,7 +31,14 @@ This section describes how to install the plugin and get it working.
 
 You may go to 'Tools' > 'Debug My Site' to view your WordPress environment debug information.
 
+= Must I keep this plugin active on my site =
+
+No, please feel free to delete this plugin once you have finished using it.
+
 == Changelog ==
+= 1.0.4 =
+* Enhancement: Filters added in for other plugins/developers to share specific data.
+* UI: Announcement added to page to show a small message to remove this plugin when not in-use.
 
 = 1.0.3 =
 * Improved coding standards
@@ -46,6 +54,9 @@ You may go to 'Tools' > 'Debug My Site' to view your WordPress environment debug
 * Initial release
 
 == Upgrade Notice ==
+= 1.0.4 =
+Please update Debug My Site for new features and minor improvements.
+
 = 1.0.3 =
 Please update Debug My Site to latest version for new features!
 
