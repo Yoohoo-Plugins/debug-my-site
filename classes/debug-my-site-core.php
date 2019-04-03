@@ -40,10 +40,11 @@ class Debug_My_Site_Core {
 	 */
 	public static function debug_info( $html = true ) {
 		global $wp_version, $wpdb, $wp_scripts;
-		$wp          = $wp_version;
-		$php         = phpversion();
-		$mysql       = $wpdb->db_version();
-		$plugins = self::get_plugins();
+
+		$wp            = $wp_version;
+		$php           = phpversion();
+		$mysql         = $wpdb->db_version();
+		$plugins 	   = self::get_plugins();
 		$stylesheet    = get_stylesheet();
 		$theme         = wp_get_theme( $stylesheet );
 		$theme_name    = $theme->get( 'Name' );
@@ -60,38 +61,43 @@ class Debug_My_Site_Core {
 			'Memcached' => class_exists( 'Memcached' ) ? 'Yes' : 'No',
 			'Redis'     => class_exists( 'Redis' ) ? 'Yes' : 'No',
 		);
-		$versions      = array(
-			'WordPress Version'           => $wp,
-			'PHP Version'                 => $php,
-			'MySQL Version'               => $mysql,
-			'JQuery Version'			  => $wp_scripts->registered['jquery']->ver,
-			'Server Software'             => $_SERVER['SERVER_SOFTWARE'],
-			'Your User Agent'             => $_SERVER['HTTP_USER_AGENT'],
-			'Session Save Path'           => session_save_path(),
-			'Session Save Path Exists'    => ( file_exists( session_save_path() ) ? 'Yes' : 'No' ),
-			'Session Save Path Writeable' => ( is_writable( session_save_path() ) ? 'Yes' : 'No' ),
-			'Session Max Lifetime'        => ini_get( 'session.gc_maxlifetime' ),
-			'Opcode Cache'                => $opcode_cache,
-			'Object Cache'                => $object_cache,
-			'WPDB Prefix'                 => $wpdb->prefix,
-			'WP Multisite Mode'           => ( is_multisite() ? 'Yes' : 'No' ),
-			'WP Memory Limit'             => WP_MEMORY_LIMIT,
-			'Currently Active Theme'      => $theme_name . ': ' . $theme_version,
-			'Parent Theme'				  => $theme->template,
-			'Currently Active Plugins'    => $plugins,
-		);
+
+		$versions = apply_filters( 'dms_debug_info_array_start', array() );
+
+		$versions['WordPress Version']           = $wp;
+		$versions['PHP Version']                 = $php;
+		$versions['MySQL Version']               = $mysql;
+		$versions['JQuery Version']			     = $wp_scripts->registered['jquery']->ver;
+		$versions['Server Software']             = $_SERVER['SERVER_SOFTWARE'];
+		$versions['Your User Agent']             = $_SERVER['HTTP_USER_AGENT'];
+		$versions['Session Save Path']           = session_save_path();
+		$versions['Session Save Path Exists']    = ( file_exists( session_save_path() ) ? 'Yes' : 'No' );
+		$versions['Session Save Path Writeable'] = ( is_writable( session_save_path() ) ? 'Yes' : 'No' );
+		$versions['Session Max Lifetime']        = ini_get( 'session.gc_maxlifetime' );
+		$versions['Opcode Cache']                = $opcode_cache;
+		$versions['Object Cache']                = $object_cache;
+		$versions['WPDB Prefix']                 = $wpdb->prefix;
+		$versions['WP Multisite Mode']           = ( is_multisite() ? 'Yes' : 'No' );
+		$versions['WP Memory Limit']             = WP_MEMORY_LIMIT;
+		$versions['Currently Active Theme']      = $theme_name . ': ' . $theme_version;
+		$versions['Parent Theme']				 = $theme->template;
+		$versions['Currently Active Plugins']    = $plugins;
+
+		$versions = apply_filters( 'dms_debug_info_array', $versions );
+
 		if ( $html ) {
+			// String to generate debug log information.
 			$debug = '';
 			foreach ( $versions as $what => $version ) {
-				$debug .= '<p><strong>' . $what . '</strong>: ';
+				$debug .= '<p><strong>' . esc_attr( $what ) . '</strong>: ';
 				if ( is_array( $version ) ) {
 					$debug .= '</p><ul class="ul-disc">';
 					foreach ( $version as $what_v => $v ) {
-						$debug .= '<li><strong>' . $what_v . '</strong>: ' . $v . '</li>';
+						$debug .= '<li><strong>' . esc_attr( $what_v ) . '</strong>: ' . esc_attr( $v ) . '</li>';
 					}
 					$debug .= '</ul>';
 				} else {
-					$debug .= $version . '</p>';
+					$debug .= esc_attr( $version ) . '</p>';
 				}
 			}
 			return $debug;
@@ -122,7 +128,7 @@ class Debug_My_Site_Core {
 	}
 
 	public static function build_download_url() {
-		return add_query_arg( 'download', 'true', admin_url( 'tools.php?page=debug-my-site-info' ) );
+		return wp_nonce_url( add_query_arg( 'download', 'true', admin_url( 'tools.php?page=debug-my-site-info' ) ), 'dms_download_txt_log' );
 	}
 
 }
