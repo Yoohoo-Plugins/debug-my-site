@@ -128,7 +128,7 @@ class Debug_My_Site_Core {
 	}
 
 	public static function build_download_url() {
-		return add_query_arg( 'download', 'true', admin_url( 'tools.php?page=debug-my-site-info' ) );
+		return wp_nonce_url( add_query_arg( 'download', 'true', admin_url( 'tools.php?page=debug-my-site-info' ) ), 'dms_download_txt_log' );
 	}
 
 }
